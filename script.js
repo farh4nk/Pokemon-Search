@@ -13,21 +13,45 @@ const specialDefense = document.getElementById("special-defense");
 const speed = document.getElementById("speed");
 
 searchButton.onclick = search;
+searchInput.addEventListener('keypress', e => {
+    if (e.key == "Enter") search();
+})
 
-const url = 'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon';
-try {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+async function search() {
+    const poke = searchInput.value;
+    
+    const pokemonUrl = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${poke}`;
+    try {
+        const response = await fetch(pokemonUrl);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        pokemonName.innerText = data['name'].toUpperCase();
+        pokemonId.innerText = data['id'];
+        weight.innerText = data['weight'] + 'lbs';
+        height.innerText = data['height'];
+        types.innerHTML = ''
+        data['types'].forEach(element => {
+            types.innerHTML += `<p style="display:inline; border-radius: 11%; padding: 0.2rem;" id="${element['type']['name']}">${element['type']['name'].toUpperCase()}</p>`;
+        });
+        hp.innerText = data['stats'][0]['base_stat'];
+        attack.innerText = data['stats'][1]['base_stat'];
+        defense.innerText = data['stats'][2]['base_stat'];
+        specialAttack.innerText = data['stats'][3]['base_stat'];
+        specialDefense.innerText = data['stats'][4]['base_stat'];
+        speed.innerText = data['stats'][5]['base_stat'];
+    } 
+    
+    catch (err) {
+        console.log(err.message);
+        alert("Pokémon not found");
     }
 
-    const data = await response.json();
-}
-
-catch (err) {
-    alert(err.message);
-}
-
-function search() {
+    
 
 }
+
+
+

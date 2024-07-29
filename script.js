@@ -11,6 +11,7 @@ const defense = document.getElementById("defense");
 const specialAttack = document.getElementById("special-attack");
 const specialDefense = document.getElementById("special-defense");
 const speed = document.getElementById("speed");
+const imgContainer = document.getElementById("img-container");
 
 searchButton.onclick = search;
 searchInput.addEventListener('keypress', e => {
@@ -32,6 +33,7 @@ async function search() {
         pokemonId.innerText = data['id'];
         weight.innerText = data['weight'] + 'lbs';
         height.innerText = data['height'];
+        imgContainer.innerHTML = `<img id="sprite" src="${data['sprites']['front_default']}">`;
         types.innerHTML = ''
         data['types'].forEach(element => {
             types.innerHTML += `<p style="display:inline; border-radius: 11%; padding: 0.2rem;" id="${element['type']['name']}">${element['type']['name'].toUpperCase()}</p>`;
@@ -42,6 +44,7 @@ async function search() {
         specialAttack.innerText = data['stats'][3]['base_stat'];
         specialDefense.innerText = data['stats'][4]['base_stat'];
         speed.innerText = data['stats'][5]['base_stat'];
+
     } 
     
     catch (err) {

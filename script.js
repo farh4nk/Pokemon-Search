@@ -19,7 +19,7 @@ searchInput.addEventListener('keypress', e => {
 })
 
 async function search() {
-    const poke = searchInput.value;
+    const poke = searchInput.value.toLowerCase();
     
     const pokemonUrl = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${poke}`;
     try {

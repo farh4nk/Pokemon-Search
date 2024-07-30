@@ -31,12 +31,12 @@ async function search() {
         const data = await response.json();
         pokemonName.innerText = data['name'].toUpperCase();
         pokemonId.innerText = data['id'];
-        weight.innerText = data['weight'] + 'lbs';
-        height.innerText = data['height'];
+        weight.innerText = data['weight'] + ' lbs';
+        height.innerText = parseFloat(data['height']) / 10 + ' m';
         imgContainer.innerHTML = `<img id="sprite" src="${data['sprites']['front_default']}">`;
         types.innerHTML = ''
         data['types'].forEach(element => {
-            types.innerHTML += `<p style="display:inline; border-radius: 11%; padding: 0.2rem;" id="${element['type']['name']}">${element['type']['name'].toUpperCase()}</p>`;
+            types.innerHTML += `<p style="display:inline; border-radius: 11px; padding: 0.6em 0.4rem;" id="${element['type']['name']}">${element['type']['name'].toUpperCase()}</p>`;
         });
         hp.innerText = data['stats'][0]['base_stat'];
         attack.innerText = data['stats'][1]['base_stat'];

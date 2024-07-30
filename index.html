@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 
-<!-- TO DO:
-    - ADD POKEMON SPRITES
-    - POKEDEX STYLING -->
-
 <html lang="en">
     <head>
-        <meta>
-        <meta>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Pokemon Search App</title>
         <link rel="stylesheet" href="styles.css">
         <script src="script.js" type="module"></script>
@@ -15,27 +11,38 @@
 
     <body>
         <h1>Pokédex</h1>
+        <div id="pokedex-container">
 
-        <input type="text" id="search-input" required>
-        <button id="search-button">Search</button>
+            <div id="pokedex-top">
+               <span id="blue-circle"></span> 
+               <span id="red-circle"></span>
+               <span id="yellow-circle"></span>
+               <span id="green-circle"></span>
+            </div>
+            
+            
 
-        <div id="pokemon-info">
-            <span id="pokemon-name"></span>
-            #<span id="pokemon-id"></span>
-            <div>Weight <span id="weight"></span></div>
-            <div>Height <span id="height"></span></div>
-        </div>
+            <div id="pokemon-info">
+                <span id="pokemon-name"></span>
+                <span id="pokemon-id"></span>
+                <div>Weight <span id="weight"></span></div>
+                <div>Height <span id="height"></span></div>
+            </div>
 
-        <div id="img-container"></div>
-        <div id="types"></div>
+            <div id="img-container"></div>
+            <div id="types"></div>
 
-        <div id="stats-container">
-            <div class="stat"><p>HP</p> <span id="hp"></span></div>
-            <div class="stat"><p>Attack</p> <span id="attack"></span></div>
-            <div class="stat"><p>Defense</p> <span id="defense"></span></div>
-            <div class="stat"><p>Special Attack</p> <span id="special-attack"></span></div>
-            <div class="stat"><p>Special Defense</p> <span id="special-defense"></span></div>
-            <div class="stat"><p>Speed</p> <span id="speed"></span></div>
+            <div id="stats-container">
+                <div class="stat"><p>HP</p> <span id="hp"></span></div>
+                <div class="stat"><p>Attack</p> <span id="attack"></span></div>
+                <div class="stat"><p>Defense</p> <span id="defense"></span></div>
+                <div class="stat"><p>Special Attack</p> <span id="special-attack"></span></div>
+                <div class="stat"><p>Special Defense</p> <span id="special-defense"></span></div>
+                <div class="stat"><p>Speed</p> <span id="speed"></span></div>
+            </div>
+
+            <input type="text" id="search-input" required>
+            <button id="search-button">Search</button>
         </div>
     </body>
 </html>

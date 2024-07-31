@@ -31,7 +31,7 @@ async function search() {
         const data = await response.json();
         pokemonName.innerText = data['name'].toUpperCase();
         pokemonId.innerText = data['id'];
-        weight.innerText = data['weight'] + ' lbs';
+        weight.innerText = (parseFloat(data['weight']) / 2.2).toFixed(1) + ' kg';
         height.innerText = parseFloat(data['height']) / 10 + ' m';
         imgContainer.innerHTML = `<img id="sprite" src="${data['sprites']['front_default']}">`;
         types.innerHTML = ''
